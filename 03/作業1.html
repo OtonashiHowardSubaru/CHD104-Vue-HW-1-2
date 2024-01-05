@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>01</title>
+    <style>
+    body{
+        background-color: #212A2B;
+        color: #FFF;
+    }
+    .banner .banner-text h1{
+        font-size: var(--fs3-font-size);
+    }
+    .banner .banner-text h2{
+        font-size: var(--fs4-font-size);
+    }
+    main{
+        width: 100%;
+    }
+    main .faq{
+        max-width: 70%;
+        margin: 4rem auto;
+    }
+    h2{
+        font-size: var(--fs2-font-size);
+        font-weight: 600;
+        text-align: center;
+    }
+    .faq .question-list input[type="checkbox"]{
+        display: none;
+    }
+    .faq .question-list .question{
+        display: block;
+        cursor: pointer;
+        margin-top:1rem;
+        padding: 2rem 1rem;
+        line-height: 1.5;
+        border: 1px solid #fff;
+        border-radius:1rem;
+        background-image: radial-gradient( rgba(254,254,254,0) 20%, rgba(255,255,255,0.7) 200%); 
+    }
+    </style>
+</head>
+<body>
+    <main id="app">
+        <div v-for = "item in list" class="faq">
+            <ul class="question-list">
+                <li>
+                    <input type="checkbox" id="question1">
+                    <label @click="item.toogle = !item.toogle" for="question1" class="question">
+                        <h3>{{ item.question }}</h3>
+                    </label>
+                    <p v-if="item.toogle" class="answer">{{ item.answer }}</p>
+                </li>
+            </ul>
+        </div>
+    </main>
+    <script src="https://unpkg.com/vue@3.4.5/dist/vue.global.js"></script>
+<script>
+    Vue.createApp({
+    data() {
+        return {
+            list:[
+                {
+                    toogle: false,
+                    questionId: "question1",
+                    question: "講師的教學風格是怎樣的？",
+                    answer: "講師的教學風格以生動互動、案例分析為主，激發學生學習興趣。",
+                },
+                {
+                    toogle: false,
+                    questionId: "question2",
+                    question: "講師是否提供辦公時間或諮詢服務？",
+                    answer: "請直接講師個人頁面中的聯繫方式直接與老師聯繫洽詢。",
+                },
+                {
+                    toogle: false,
+                    questionId: "question4",
+                    question: "月刊內容是否由專業作者或業界專家編寫？",
+                    answer: "我們聘請專業作者和業界專家，確保文章具有高品質和可靠性。",
+                },
+                {
+                    toogle: false,
+                    questionId: "question5",
+                    question: "能否訂閱產業動態通訊或新聞快報？",
+                    answer: "您可以訂閱我們的產業動態通訊，隨時掌握最新消息。",
+                },
+            ]
+        }
+    },
+}).mount('#app')
+</script>
+</body>
+</html>

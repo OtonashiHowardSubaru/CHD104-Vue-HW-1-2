@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HW</title>
+</head>
+<style>
+    .faq_wrap {
+    width: 100%;
+    display: flex;
+    justify-content: center; 
+    margin-bottom: 100px;
+    color: #504d4d;
+}
+.faq_content { 
+    width: 900px;
+    height: auto;
+    margin-top: 200px;
+    display: flex;
+    flex-direction: column;
+}
+h1 {
+    font-size: 30px;
+    text-align: center;
+    font-family: sans-serif;
+    color: #767676;
+}
+.faq_content .qa {
+    display: flex;
+    flex-direction: column;
+    letter-spacing: 1.5px;
+}
+.q label {
+    cursor: pointer;
+}
+.qa button {
+    border: none;
+    background-color: #EEEAE6;
+    color: #CEB9A4;
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.faq_content .q {
+    /* display: flex; */
+    justify-content: space-between;
+    padding: 10px 20px;
+    align-items: baseline;
+    font-size: 18px;
+    background-color: #EEEAE6;
+    margin: 30px 0;
+    border-radius: 4px;
+}
+.faq_content .a {
+    padding: 14px 20px;
+    line-height: 26px;
+    font-size: 18px;
+    /* display: block; */
+}
+.showAnswer {
+    display: block;
+}
+@media screen and (max-width: 768px) {
+    .faq_content {
+        margin-top: 50px;
+    }
+    .qa button {
+        font-size: 5vw;
+        align-items: center;
+    }
+    .faq_content .q {
+        font-size: 4vw;
+        align-items: center;
+        line-height: 6vw;
+    }
+    .faq_content .a {
+        font-size: 4vw;
+    }
+    .faq_content .qa {
+        margin: 0 30px;
+    }
+}
+    /* 英文字體設定 */
+html:lang(en) {
+    font-family: 'Nunito', sans-serif;
+}
+
+/* 中文字體設定 */
+html:lang(zh) {
+    font-family: 'Noto Sans TC', sans-serif;
+    font-family: 'Nunito', sans-serif;
+} 
+
+* {
+    margin: 0 ;
+    padding: 0;
+}
+/* header */
+
+.main-header{
+    background-size: cover;
+    background-position: center top;
+    /* background-repeat: no-repeat; */
+}
+.header{
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    padding: 1px;
+}
+.logo img{
+    display: block;
+    width: 100%;
+    /* padding: 20px 20px 0px; */
+}
+
+a {
+    text-decoration: none;
+    color: black;
+    font-size: 16px;
+    padding: 16px;
+}
+a img {
+    width: 40%;
+    padding: 5%;
+}
+.header{
+    width: 85%;
+    display: flex;
+    margin: auto;
+    justify-content: space-between;
+
+}
+.section_banner .banner_container {
+    width: 100%;
+    padding-top: 5px;
+    position: relative;
+}
+
+.banner_container .banner_bg {
+    max-width: 100%;
+    height: 250px;
+    background-image: url(./banner.png);
+    background-size: cover;
+    background-position: center;
+    margin: auto;
+}
+.banner_container .banner_text {
+    position: absolute;
+    top: 40%;
+    left: 15%;
+    /* transform: translate(-50%, 0); */
+}
+
+.banner_container .banner_text h2 {
+    font-size: 50px;
+    font-weight: 600;
+    color: white;
+    letter-spacing: 4px;
+    padding: 20px 0;
+}
+
+/* header_end */
+
+/* 漢堡 */
+#menu-switch{
+    display: none;
+}
+/* 三條線 */
+.hb {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    z-index: 100;
+}
+.hb span .menu-switch,
+.hb span .menu-switch::before,
+.hb span .menu-switch::after {
+    background: #222;
+    content: '';
+    display: block;
+    height: 1px;
+    position: absolute;
+    transition: background ease .3s, top ease .3s .3s, transform ease .3s;
+    width: 20px;
+}
+.hb span {
+    width: 100%;
+    height: 2px;
+    margin: 3px auto;
+    background-color: rgb(0, 0, 0);
+}
+
+
+@media (min-width: 768px) {
+    .hb {
+        display: none;
+    }    
+}
+
+@media (max-width: 768px) {
+    .menu li {
+        width: 100%;
+        display: none;
+        border-color: #000;
+        text-align: center;
+    }  
+}
+.menu a {
+    text-decoration: none;
+    color: #000;
+}
+@media (max-width: 768px) {
+    #menu-switch:checked ~ .main-header .header .menu
+    {
+        display: flex;
+        justify-content: space-evenly;
+    }
+    #menu-switch:checked ~ .main-header .header .menu li {
+    display: inline-block;
+    text-align: -webkit-center;
+    border-bottom: 1px solid #c5b0a1;
+    /* text-align: center; */
+    font-size: 1.8rem;
+    font-weight: 600;
+    letter-spacing: 2px;
+    }
+    .menu a {
+        display: block;
+        padding: 10px;
+        width: 20%;
+    }
+    .menu a + a {
+        border-top: 1px solid #fff;
+    }
+    .logo img{
+    display: block;
+    width: 100%;
+    padding: 0px 20px 0px;
+    }
+}
+.menu{
+    display: flex;
+    width: 55%;
+    font-size: 0.3em;
+    text-align: right;
+    margin: 20px;
+    list-style: none;
+    justify-content: flex-end;
+    align-items: center;
+}
+@media (max-width: 768px) {
+    .menu{
+    position: fixed;
+    right: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vw;
+    display: none;
+    background-color: #FFF9F2;
+    z-index: 10;
+    margin: 0;
+    padding: 20px;
+    flex-direction: column;
+    transition: all 0.3s ease-in-out;
+
+}
+    a img {
+        width: 20px;
+        /* padding: 5%; */
+    }
+}
+/* 媒體查詢end */
+/* header_end */
+/* ------------------------------------------------------------------- */
+/* products_beer_craft_start */
+.beer_craft {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-top: 30px; 
+}
+.beer_products_title, .others_products_title{
+    color: #000;
+    font-family: Noto Sans;
+    font-size: 38px;
+    font-weight: 600;
+    letter-spacing: 5px;
+    margin: 100px 0 30px;
+}
+
+.wraps {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    max-width: 75%;
+    margin-top: 20px;
+    border-top: 2px solid #e8e6df;
+    padding: 20px;
+}
+
+.wrap {
+    text-align: center;
+    width: 28%;
+    padding: 10px;
+    margin: 1%;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #FFF9F2;
+    position: relative;
+}
+.card {
+    display: flex;
+    flex-direction: column;
+}
+.card img{
+    width: 100%;
+    object-fit: cover;
+}
+.card .card_contect {
+    text-align: start;
+}
+.card .card_contect .card_contect_title{
+    text-align: start;
+    color: #000;
+    font-family: Noto Sans;
+    font-size: 22px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    padding: 15px 3px 5px;
+}
+.card .card_contect .card_contect_titleE{
+    text-align: start;
+    color: #000;
+    font-family: nunito;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    padding: 5px 3px 8px;
+}
+.card .card_contect .card_contect_text{
+    text-align: start;
+    color: #000;
+    font-family: Noto Sans;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 30px; /* 150% */
+    letter-spacing: 0.25em;
+    padding: 10px 3px 10px;
+    text-align: justify;
+}
+.card_contect_price {
+    margin-top: 20%;
+}
+.price{
+    
+    color: #000;
+    font-family: Nunito;
+    font-size: 20px;
+    font-weight: 400;
+    position: absolute;
+    bottom: 5%;
+    right: 10%;
+
+}
+.beer_craft a{
+    color: #353535;
+    font-family: Inter;
+    font-size: 18px;
+    font-weight: 500;
+    letter-spacing: 5px;
+    border: #000 solid 1px;
+    border-radius: 50px;
+    display: inline-flex;
+    padding: 16px 77px;
+    margin: 35px 0px 45px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-radius: 50px;
+    border: 1px solid #A2A2A2;
+    background-color: #FFF;
+}
+.beer_craft a:hover{
+    color: #353535;
+    background-color: #FFF9F2;
+}
+/* products_beer_craft_end */
+/* products_beer_season_start */
+.season_bg{
+background-image: url(./products_season_bg.png);
+}
+/* products_beer_season_end */
+
+/* slogan */
+
+.section_slogan .slogan_pic {
+    display: flex;
+    justify-content: center;
+}
+.slogan_pic .slogan_img{
+    width: 20%;
+}
+.slogan_pic .slogan_img img {
+    width: 100%;
+    object-fit: cover;
+}
+
+@media (max-width: 768px) {
+    .wraps {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .card .card_contect .card_contect_text {
+        display: none;
+    }
+
+    .wrap {
+        text-align: center;
+        width: 80%;
+        padding: 10px;
+        margin: 1%;
+        border: 1px solid #ddd;
+        border-radius: 3px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        background-color: #FFF9F2;
+        position: relative;
+    }
+
+}
+
+
+.marquee-container {
+    
+    background-color: #FFEBD2;
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    font-size: 40px;
+    font-family: Kosugi Maru;
+    color: #FC7643;
+    padding: 10px 0px;
+  }
+  
+  .marquee-content {
+    display: inline-block;
+    white-space: nowrap;
+    animation: marquee 20s linear infinite;
+  }
+  
+  .marquee-content2 {
+    display: inline-block;
+    white-space: nowrap;
+    animation: marquee2 20s linear infinite;
+  }
+  .marquee-content3 {
+    display: inline-block;
+    white-space: nowrap;
+    animation: marquee2 20s linear infinite;
+  }
+  
+  @keyframes marquee {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
+  }
+  
+  @keyframes marquee2 {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
+  }
+  @keyframes marquee3 {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
+  }
+
+
+
+
+#pagetop i{
+    position: fixed;
+    /* bottom: 35px;
+    right: 5%; */
+    margin: 2vw; 
+    width: 50px;
+    height: 50px;
+    background-color: #FFF; /* 設定按鈕背景色 */
+    /* padding: 26px 20px; 設定按鈕內間距 */
+    border-radius: 100%; /* 設定按鈕圓角 */
+    display: none; /* 初始時隱藏按鈕 */
+    cursor: pointer;
+    color: #B47549;
+    border: #B47549 solid 2px;
+    right: 0;
+    bottom: 0;
+    display: grid;
+    place-content: center;
+}
+
+
+
+/* footer _start*/
+.main_footer {
+    width: 100%;
+    margin: auto;
+    background-color:#CD9933;
+    }
+    .footer_container {
+    display: flex;
+    padding: 40px 0 50px;
+    max-width: 100%;
+    margin: 0 auto;
+    flex-wrap: wrap;
+    justify-content: center;
+    }
+    .main_footer .footer_container {
+    width: 85%;
+    height: auto;
+    margin: auto;
+    
+    }
+    .footer_container .footer_list1 {
+    display: flex;
+    flex-direction: column;
+    gap: 45px;
+    padding: 0px;
+    }
+    .footer_container .footer_list1 .footer_info p {
+    width: 100%;
+    flex-shrink: 0;
+    color: #FFF;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 3em;
+    letter-spacing: 1px;
+    }
+    
+    
+    .footer_container .footer_list2 {
+    /* width: 100%; */
+    margin-left: 5%;
+    display: flex;
+    flex-direction: column;
+    /* padding: 200px; */
+    }
+    
+    .footer_container .footer_list2 .nav {
+    display: flex;
+    flex-direction: row;
+    margin-left: auto;
+    gap: 26px;
+    }
+    
+    .footer_container .footer_list2 .nav a {
+    display: inline-block;
+    text-decoration: none;
+    color: white;
+    font-size: 15px;
+    font-weight: 500;
+    font-weight: bold;
+    letter-spacing: 2px;
+    }
+    
+    .footer_container .footer_list2 .follow {
+    margin-left: 20px;
+    margin-top: 20%;
+    margin-bottom: 15%;
+    display: flex;
+    justify-content: flex-end;
+    }
+    .footer_container .footer_list2 .follow img {
+    width: 40px;
+    display: flex;
+    margin-right: 20px;
+    }
+    
+    .footer_container .footer_copyright {
+    padding-bottom: 20px;
+    text-align: end;
+    }
+    
+    .footer_container .footer_copyright p {
+    font-size: 12px;
+    font-weight: 300;
+    line-height: 1.5;
+    color: white;
+    }
+    @media (max-width: 768px) {
+    .footer_container .footer_list2 .nav a {
+    display: none;
+    }  
+    .footer_container .footer_list2 .follow {
+    margin: 0;
+    }
+    .footer_container .footer_copyright {
+    padding-bottom: 10px;
+    text-align: end;
+    }
+    
+    .footer_container .footer_copyright p {
+    font-size: 12px;
+    font-weight: 300;
+    /* line-height: 1; */
+    color: rgb(255, 255, 255);
+    margin: 2px;
+    }
+    .footer_container {
+    display: flex;
+    padding: 60px 0 50px;
+    max-width: 100%;
+    margin: 0 auto;
+    flex-wrap: wrap;
+    /* justify-content: end; */
+    }
+}
+    /* footer _end*/
+</style>
+<body>
+
+    <div data-aos="fade-up" id="app">
+        <section class="beer_craft">
+            <h1 class="beer_products_title">精釀啤酒系列</h1>
+            <div class="wraps">
+                <div v-for="(item,index) in list" class="wrap">
+                    <div class="card">
+                        <img :src="item.imgSrc">
+                        <div class="card_contect">
+                            <p class="card_contect_title">{{ item.pTitle }}</p>
+                            <p class="card_contect_titleE">{{ item.pTitleE }}</p>
+                            <p class="card_contect_text">{{ item.pText }}</p>    
+                        </div>
+                        <div class="card_contect_price">
+                            <p class="price">{{ item.price }}</p>                              
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <div class="faq_content" id="app2">
+        <div v-for="(item,index) in list" class="qa">
+            <div  @click="item.toggle=!item.toggle" class="q">
+                <p>{{ item.Q }}</p>
+
+                <div v-if="item.toggle==true" class="a">{{ item.A }}</div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- <div class="faq_content" >
+        <div class="qa">
+            <div class="q">
+                <label for="click1">Q1 蠟燭側邊看起來有離杯或凹凸不平是正常現象嗎？對香氛是否有影響？</label>
+                <button class="btnPlus" id="click1">+</button>
+            </div>
+            <div class="a" style="display: none;"> • 天然蠟體容易因為天氣的溫(濕)度、運送過程或倉儲的溫度變化等，皆有可能造成蠟體的熱脹冷縮，因蠟燭和杯體本身的熱脹冷縮幅度不一樣而產生的收縮，屬正常現象，並不屬於瑕疵商品，也不會影響使用和香氣喔！</div>
+        </div>
+        <div class="qa">
+            <div class="q">
+                <label for="click2">Q2 香氛蠟燭能使用多長時間？</label>
+                <button class="btnPlus" id="click2">+</button>
+            </div>
+            <div class="a" style="display: none;"> • 大豆蠟燭與其他石蠟等有不同燃燒時間，本網站販售之蠟燭皆使用大豆蠟製成。<br> • 一般來說210g的蠟燭正確使用下，可燃燒約30-40小時。若使用蠟燭暖燈可延長時間至70-80小時。<br>⚠️注意：燃燒時間取決於擺放的空間大小和環境。</div>
+        </div>
+        <div class="qa">
+            <div class="q">
+                <label for="click3">Q3 蠟燭燃燒表面不均勻怎麼辦？</label>
+                <button class="btnPlus" id="click3">+</button>
+            </div>
+            <div class="a"> •「每一次」燃燒請建議持續1.5~2小時，讓表面燭液完全融化成一個平整的蠟池後再吹熄，蠟燭降溫重新凝固後表面才會較為平整。
+            </div>
+        </div>
+        <div class="qa">
+            <div class="q">
+                <label for="click4">Q4 蠟燭已經燒了超過2小時旁邊還是燒不到怎麼辦？</label>
+                <button class="btnPlus" id="click4">+</button>
+            </div>
+            <div class="a"> • 請記得先確認木片長度是否適當；除了木片太短燭焰太小的問題，大豆蠟也容易被室內溫度影響，天氣寒冷會讓燭焰溫度下降比較不容易燒到旁邊。<br> • 通常燃燒2小時後旁邊的蠟已經軟化變半透明，可以使用刮刀或小湯匙將蠟輕輕的往中間推，或是輕輕轉動杯子，讓蠟液擴散到邊緣，以利融化。</div>
+        </div>
+        <div class="qa">
+            <div class="q">
+                <label for="click5">Q5 如何保養蠟燭？</label>
+                <button class="btnPlus" id="click5">+</button>
+            </div>
+            <div class="a"> • 蠟燭拆封後，請存放於陰涼處，避免陽光直射。<br> • 開封後建議1年內使用完畢，未開封陰涼處可存放3年。<br> • 大豆蠟蠟燭第一次點燃/照燈時，一定要等表面的蠟完全融化形成蠟池後再熄滅，建議至少2-3小時避免蠟燭表面不平均。 </div>
+        </div>
+        <div class="qa">
+            <div class="q">
+                <label for="click6">Q6 蠟燭是否可接近寵物？</label>
+                <button class="btnPlus" id="click6">+</button>
+            </div>
+            <div class="a"> • 毛小孩的嗅覺敏銳，加上毛孩也有個體差異，一般建議盡量避免接觸、靠近毛小孩喲。<br>⚠️注意：請擺放安全位置，遠離兒童、毛小孩和易燃物！</div>
+        </div>
+        <div class="qa">
+            <div class="q">
+                <label for="click7">Q7 孕婦可以使用香氛類型產品嗎？</label>
+                <button class="btnPlus" id="click7">+</button>
+            </div>
+            <div class="a"> • 我們的蠟燭皆使用天然精油製作，每款比例不盡相同，如有疑慮，建議向您的專業醫師諮詢喔。</div>
+        </div>
+    </div> -->
+
+    <!-- <div data-aos="fade-up">
+        <section class="beer_craft">
+    
+            <h1 class="beer_products_title">精釀啤酒系列</h1>
+    
+            <div class="wraps">
+    
+                <div class="wrap">
+                    <div class="card">
+                        <img src="./bruhabeer/products_craft_1.png">
+                        <div class="card_contect">
+                            <p class="card_contect_title">露西法的微笑</p>
+                            <p class="card_contect_titleE">Lucifer's Grin</p>
+                            <p class="card_contect_text">大膽而獨特，帶有辛辣、咖啡和巧克力的豐富風味。</p>                      
+                        </div>
+                        <div class="card_contect_price">
+                            <p class="price">$140/瓶</p>                              
+                        </div>
+                    </div>
+                </div>  
+                
+                <div class="wrap">
+                    <div class="card">
+                        <img src="./bruhabeer/products_craft_2.png">
+                        <div class="card_contect">
+                            <p class="card_contect_title">鄉釀芬芳</p>
+                            <p class="card_contect_titleE">Rural Brew Aroma</p>
+                            <p class="card_contect_text">當地新鮮啤酒花和特選大麥釀製而成，清新果香與微妙的花香交織。</p>                    
+                        </div>
+                        <div class="card_contect_price">
+                            <p class="price">$160/瓶</p>                              
+                        </div>
+                    </div>
+                </div> 
+    
+                <div class="wrap">
+                    <div class="card">
+                        <img src="./bruhabeer/products_craft_3.png">
+                        <div class="card_contect">
+                            <p class="card_contect_title">藝術家的筆觸</p>
+                            <p class="card_contect_titleE">Artisan's Palette</p>
+                            <p class="card_contect_text">帶有水果、香料、花香和木桶陳釀的複雜層次。</p>                   
+                        </div>
+                        <div class="card_contect_price">
+                            <p class="price">$130/瓶</p>                              
+                        </div>
+                    </div>
+                </div> 
+    
+            </div>
+    
+            <a href="products2.html">更多精釀啤酒</a>
+    
+        </section>
+    </div> -->
+
+    
+
+    <script src="https://unpkg.com/vue@3.4.5/dist/vue.global.js"></script>
+    <script>
+        //用Vue 新增應用 在#APP
+        Vue.createApp({
+            data() {
+                return {
+                    list:[
+                        {
+                            imgSrc:'./bruhabeer/products_craft_1.png',
+                            pTitle:'露西法的微笑',
+                            pTitleE:"Lucifer's Grin",
+                            pText:'大膽而獨特，帶有辛辣、咖啡和巧克力的豐富風味。',
+                            price:'$140/瓶'
+                        },
+                        {
+                            imgSrc:'./bruhabeer/products_craft_2.png',
+                            pTitle:'鄉釀芬芳',
+                            pTitleE:"Rural Brew Aroma",
+                            pText:'當地新鮮啤酒花和特選大麥釀製而成，清新果香與微妙的花香交織。',
+                            price:'$160/瓶'
+                        },
+                        {
+                            imgSrc:'./bruhabeer/products_craft_3.png',
+                            pTitle:'藝術家的筆觸',
+                            pTitleE:"Artisan's Palette",
+                            pText:'帶有水果、香料、花香和木桶陳釀的複雜層次。',
+                            price:'$130/瓶'
+                        }
+                    ]
+                }
+            },
+        }).mount("#app")
+        Vue.createApp({
+            data() {
+                return {
+                    list:[
+                        {
+                            Q:'Q1 蠟燭側邊看起來有離杯或凹凸不平是正常現象嗎？對香氛是否有影響？',
+                            A:' • 天然蠟體容易因為天氣的溫(濕)度、運送過程或倉儲的溫度變化等，皆有可能造成蠟體的熱脹冷縮，因蠟燭和杯體本身的熱脹冷縮幅度不一樣而產生的收縮，屬正常現象，並不屬於瑕疵商品，也不會影響使用和香氣喔！',
+                            click: 'click1',
+                            toggle:false,
+                        },
+                        {
+                            Q:'Q2 香氛蠟燭能使用多長時間？',
+                            A:' • 大豆蠟燭與其他石蠟等有不同燃燒時間，本網站販售之蠟燭皆使用大豆蠟製成。 • 一般來說210g的蠟燭正確使用下，可燃燒約30-40小時。若使用蠟燭暖燈可延長時間至70-80小時。⚠️注意：燃燒時間取決於擺放的空間大小和環境。',
+                            click: 'click2',
+                            toggle:false,
+                        },
+                        {
+                            Q:'Q3 蠟燭燃燒表面不均勻怎麼辦？',
+                            A:' •「每一次」燃燒請建議持續1.5~2小時，讓表面燭液完全融化成一個平整的蠟池後再吹熄，蠟燭降溫重新凝固後表面才會較為平整。',
+                            click: 'click3',
+                            toggle:false,
+                        },
+                        {
+                            Q:'Q4 蠟燭已經燒了超過2小時旁邊還是燒不到怎麼辦？',
+                            A:'  • 請記得先確認木片長度是否適當；除了木片太短燭焰太小的問題，大豆蠟也容易被室內溫度影響，天氣寒冷會讓燭焰溫度下降比較不容易燒到旁邊。 • 通常燃燒2小時後旁邊的蠟已經軟化變半透明，可以使用刮刀或小湯匙將蠟輕輕的往中間推，或是輕輕轉動杯子，讓蠟液擴散到邊緣，以利融化。',
+                            click: 'click4',
+                            toggle:false,
+                        },
+                        {
+                            Q:'Q5 如何保養蠟燭？',
+                            A:'• 蠟燭拆封後，請存放於陰涼處，避免陽光直射。 • 開封後建議1年內使用完畢，未開封陰涼處可存放3年。 • 大豆蠟蠟燭第一次點燃/照燈時，一定要等表面的蠟完全融化形成蠟池後再熄滅，建議至少2-3小時避免蠟燭表面不平均。',
+                            click: 'click5',
+                            toggle:false,
+                        },
+                        {
+                            Q:'Q6 蠟燭是否可接近寵物？',
+                            A:' • 毛小孩的嗅覺敏銳，加上毛孩也有個體差異，一般建議盡量避免接觸、靠近毛小孩喲。⚠️注意：請擺放安全位置，遠離兒童、毛小孩和易燃物！',
+                            click: 'click6',
+                            toggle:false,
+                        },
+                        {
+                            Q:'Q7 孕婦可以使用香氛類型產品嗎？',
+                            A:' • 我們的蠟燭皆使用天然精油製作，每款比例不盡相同，如有疑慮，建議向您的專業醫師諮詢喔。',
+                            click: 'click7',
+                            toggle:false,
+                        },
+                    ]
+                }
+            },
+        }).mount("#app2")
+    </script>
+</body>
+</html>

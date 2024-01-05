@@ -1,0 +1,386 @@
+:root{
+    --fs1-font-size:clamp(2rem, 3.334vw, 3rem);
+    --fs2-font-size:clamp(1.5rem, 2.441vw, 1.625rem);
+    --fs3-font-size:clamp(1rem, 1.667vw, 1.125rem);
+    --fs4-font-size:clamp(0.75rem, 1.269vw, 0.875rem);
+    --success-color: #02DEC5;
+    --error-color: #e74c3c;
+    box-sizing: border-box;
+}
+body{
+    background-color: #212A2B;
+    color: #fff;
+    font-family: "Noto Sans TC", "Roboto",sans-serif;
+    letter-spacing: 1px;
+}
+/* main-nav */
+#main-header{
+    width: 100%;
+    position: sticky;
+    top: 0;
+    background-color: #212A2B;
+    z-index: 999;
+}
+/* .main-nav{
+    width: 100%;
+    position: sticky;
+    top: 0;
+    background-color: #212A2B;
+    z-index: 999;
+} */
+.main-nav .wrap{
+    width: 100%;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+.main-nav .wrap .nav-logo img{
+    width: 100%;
+    vertical-align: middle;
+    margin: 1rem;
+}
+#nav-switch{
+    display: none;
+}
+.main-nav .wrap nav .nav-bar{
+    list-style: none;
+    display: flex;
+}
+.main-nav .wrap .nav-bar a{
+    text-decoration: none;
+    font-size: var(--fs3-font-size);
+    color: #fff;
+    padding: 0 10px;
+}
+@media screen and (max-width:1024px){
+    .main-nav .wrap{
+        position: relative;
+        justify-content: left;
+    }
+    .main-nav .wrap .nav-logo img{
+        width: 50%;
+    }
+    .main-nav nav{
+        display: none;
+    }
+    #nav-switch:checked ~ .main-nav nav{
+        display: block;
+    }
+    .main-nav nav .nav-bar{
+        position: fixed;
+        z-index: 999;
+        /* inset: 0 0 0 40%; */
+        /* old version OS cannot support */
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 40%;
+        background-color: rgba(100, 100, 100, 0.1);
+        -webkit-backdrop-filter: blur(1.5rem);
+                backdrop-filter: blur(1.5rem);
+        padding: min(20vh,10rem) 2.5rem;
+        flex-direction: column;
+        gap: 1.5rem;
+        letter-spacing: 3px;
+    }
+    .main-nav .hb{
+        width: 40px;
+        height: 40px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        position: absolute;
+        z-index: 1000;
+        top: 20%;
+        right: 10%;
+    }
+    .main-nav .hb span{
+        width: 80%;
+        height:2px;
+        background-color: #02DEC5; 
+        margin: 3px auto;
+        border-radius: 5px;
+        transform-origin:left center;
+    }
+    /* hanbuger-animation */
+    #nav-switch:checked~ .main-nav .hb .middle{
+        transition: opacity 200ms ease-in-out;
+        opacity: 0;
+        width: 0;
+    }
+    #nav-switch:checked~ .main-nav .hb .top{
+        transform:translate(3px, -3px)rotate(45deg);
+        transition:300ms ease-in-out;
+    }
+    #nav-switch:checked~ .main-nav .hb .bottom{
+        transform:translate(3px, 3px)rotate(-45deg);
+        transition:300ms ease-in-out;
+    }
+}
+/* sign_popup */
+.sign{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 9999;
+    background-color: rgba(80, 80, 80, 0.5);
+    backdrop-filter: blur(1.5rem);
+    -webkit-backdrop-filter: blur(1.5rem);
+    display: none;
+}
+.sign .container{
+    width: 50%;
+    /* It is nesseray to be seted when element used 3d design. */
+    perspective: 1000px;
+    margin: auto;
+    position: relative;
+}
+@media screen and (max-width:768px){
+    .sign .container{
+        width: 70%;
+        margin: auto;
+    }
+}
+.sign .close-secondary{
+    position: absolute;
+    top: .5rem;
+    right: -2.2rem;
+}
+/* switch button-bg */
+.sign-switch{
+    margin: 1rem auto;
+    position: relative;
+}
+.sign-switch input{
+    -webkit-appearance:none;
+            appearance: none;
+    outline: none;
+    border: 1px solid #fff;
+    border-radius: 1rem;
+    background-color: transparent;
+    margin: 0 auto;
+    vertical-align: top;
+    width: 100%;
+    padding: 1.5rem 0;
+    position: relative;
+}
+/* switch button-font */
+.sign-switch input::before,.sign-switch input::after{
+    position: absolute;
+    z-index: 10001;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #FFF;
+    font-size: var(--fs3-font-size);
+    font-weight: 600;
+}
+.sign-switch input:before{
+    content: "登入";
+    left: 15%;
+}
+.sign-switch input::after{
+    content: "註冊";
+    right: 15%;
+}
+.sign-switch input:not(:checked)::before{
+    color: #212A2B;
+    transition: color .3s;
+    font-weight: 600;
+}
+.sign-switch input:checked::after{
+    color: #212a2b;
+    transition: color .3s;
+    font-weight: 600;
+}
+/* switch-button */
+.sign-switch .switcher{
+    position: absolute;
+    z-index: 10000;
+    top: 10%;
+    bottom: 10%;
+    border-radius: 12px;
+}
+/* top,bottom: make sure the height of button
+left,right:make sure the weight of button */
+.sign-switch input:not(:checked)+.switcher{
+    left: 5px;
+    right: 60%;
+    background-color: #02DEC5;
+    transition: left .4s , right .5s, background .2s;
+}
+.sign-switch input:checked+.switcher{
+    left: 60%;
+    right: 5px;
+    background-color: #02DEC5;
+    transition: right .4s , left .5s;
+}
+/* sign-main-card */
+.sign-card{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    -webkit-transform-style:preserve-3d ;
+            transform-style:preserve-3d;
+}
+/* in and up */
+.sign-card .sign-content{
+    margin:auto;
+    box-sizing: border-box;
+    width: 100%;
+    padding: 5% 5%;
+    border-radius: 1rem;
+    background-color: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.7);
+    box-shadow: 0 4px 30px rgba(256, 256, 256, 0.5);
+    -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+    position: absolute;
+}
+.sign-card .up{
+    transform: rotateY(180deg);
+}
+/* sign-card-content */
+.sign-content h1{
+    font-size: var(--fs1-font-size);
+    font-weight: 600;
+    text-align: center;
+}
+.sign-content .sign-other{
+    display: flex;
+    justify-content: space-evenly;
+    margin: 1rem 0; 
+}
+.sign-content .sign-other a{
+    text-decoration: none;
+    font-size: clamp(0.5rem,1vw,0.8rem);
+    color: #B2B2B2;
+}
+/* sign-card-input-validation */
+.sign-content form .form-grid{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: .5rem;
+}
+@media screen and (max-width:768px){
+    .sign-content form .form-grid{
+        display: flex;
+        flex-direction: column;
+    }
+}
+.sign-content .form-grid .input-wrap>*{
+    width: 100%;
+    box-sizing: border-box;
+    padding-top: 5px;
+}
+.sign-content .form-grid .input-wrap>*{
+    display: block;
+}
+.sign-content .form-grid .input-wrap input,.sign-content input{
+    color: #FFF;
+    background: none;
+    outline: none;
+    border: 1px solid #fff;
+    border-radius: .8rem;
+    font-size: var(--fs4-font-size);
+    padding: .8rem;
+}
+/* sign-card-input-validation-show */
+.sign-content .form-grid input.success{
+    border-color: var(--success-color);
+}
+.sign-content .form-grid input.error{
+    border-color: var(--error-color);
+}
+.sign-content .form-grid span{
+    color: var(--error-color);
+    font-size: clamp(0.5rem,1vw,0.8rem);
+    padding-left: 1rem;
+    visibility: hidden;
+}
+.sign-content .form-grid input.error+span{
+    visibility: visible;
+}
+::placeholder{
+    color: #FFF;
+    font-size: var(--fs4-font-size);
+}
+.sign-content .form-grid select{
+    appearance: none;
+    outline: none;
+    color: #FFF;
+    background-color: transparent;
+    border: 1px solid #fff;
+    border-radius: .8rem;
+    font-size: var(--fs4-font-size);
+    cursor: pointer;
+    width: 100%;
+    padding: .8rem;
+}
+.sign-content .form-grid select option{
+    background-color: #212A2B;
+}
+@media screen and (max-width:768px){
+    .sign-content form select{
+        margin-bottom: .5rem;
+    }
+}
+/* change defult style of checkbox in card bottom*/
+.sign-content .check{
+    font-size: clamp(0.5rem,1vw,0.8rem);
+    display: block;
+    line-height: 12px;
+    margin: 10px 0 0 10px;
+    color: #B2B2B2;
+}
+.sign-content input[type=checkbox]{
+    display: none;
+}
+.sign-content input[type=checkbox]+span{
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    padding-right: 2px;
+    background: url(../img/cb-off.svg) no-repeat;
+    vertical-align: top;
+}
+.sign-content input[type=checkbox]:checked+span{
+    background: url(../img/cb-on.svg) no-repeat;
+    vertical-align: top;
+}
+/* test click-flip effect */
+/* .sign-card:hover{
+    transform: rotateY(180deg);
+    transition: transform 3s;
+}  */
+.is-flip{
+    -webkit-animation: flip .5s linear both;
+            animation: flip .5s linear both;
+
+}
+.is-flipInverse{
+    -webkit-animation: flip-inverse .5s linear both;
+            animation: flip-inverse .5s linear both;
+}
+
+@keyframes flip {
+    0%{
+        transform: rotateY(0deg);
+    }
+    100%{
+        transform: rotateY(180deg);
+    }
+}
+@keyframes flip-inverse {
+	0%{
+		transform: rotateY(180deg);
+	}
+	100%{
+		transform: rotateY(0deg);
+	}
+	}
+    .hidden {
+        display: none;
+    }

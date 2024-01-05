@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About</title>
+    <link rel="icon" href="img/ANTHRO ACADEMY.ico" />
+    <link rel="stylesheet" href="css/reset.css" />
+    <link rel="stylesheet" href="css/btn.css" />
+    <link rel="stylesheet" href="css/header.css" />
+    <link rel="stylesheet" href="css/footer.css" />
+    <link rel="stylesheet" href="css/about.css" />
+    <script
+      src="https://kit.fontawesome.com/db0d0bbe07.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="js/jquery-3.7.1.js"></script>
+  </head>
+  <body>
+    <header id="main-header"></header>
+    <div class="banner">
+      <div class="banner-pic">
+        <img src="img/about-banner-photo.png" alt="about" />
+      </div>
+      <div class="banner-text">
+        <h1>關於綠人</h1>
+        <h2>&nbspABOUT</h2>
+      </div>
+    </div>
+    <div id="app">
+      <main>
+        <div class="faq">
+          <ul class="question-list">
+            <li v-for="item of faqs" @click="item.toggle = !item.toggle">
+              <label for="question1" class="question">
+                <h3>{{item.question}}</h3>
+              </label>
+              <p v-if="item.toggle" class="answer">{{item.answer}}</p>
+            </li>
+          </ul>
+        </div>
+      </main>
+    </div>
+    <footer id="main-footer"></footer>
+    <script defer src="js/loading.js"></script>
+    <script src="https://unpkg.com/vue@3.4.5/dist/vue.global.js"></script>
+    <script>
+      Vue.createApp({
+        data() {
+          return {
+            faqs: [
+              {
+                question: "講師的教學風格是怎樣的？",
+                answer:
+                  "講師的教學風格以生動互動、案例分析為主，激發學生學習興趣。",
+                toggle: false,
+              },
+              {
+                question: "講師是否提供辦公時間或諮詢服務？",
+                answer: "請直接講師個人頁面中的聯繫方式直接與老師聯繫洽詢。",
+                toggle: false,
+              },
+              {
+                question: "月刊內容是否由專業作者或業界專家編寫？",
+                answer:
+                  "我們聘請專業作者和業界專家，確保文章具有高品質和可靠性。",
+                toggle: false,
+              },
+              {
+                question: "能否訂閱產業動態通訊或新聞快報？",
+                answer: "您可以訂閱我們的產業動態通訊，隨時掌握最新消息。",
+                toggle: false,
+              },
+            ],
+          };
+        },
+      }).mount("#app");
+    </script>
+  </body>
+</html>

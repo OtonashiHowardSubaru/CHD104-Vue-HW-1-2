@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About</title>
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/btn.css">
+    <link rel="stylesheet" href="css/about.css">
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/footer.css">
+    <style>
+        /* 這一段是固定的 */
+        .v-enter-active,
+        .v-leave-active {
+          transition: opacity 0.5s ease;
+        }
+    
+        .v-enter-from,
+        .v-leave-to {
+          opacity: 0;
+        }
+    
+        .v-enter-to,
+        .v-leave-from {
+          opacity: 1;
+        }
+        /* 這一段是固定的 */
+      </style>
+</head>
+<body>
+    <main>
+        <div class="faq" id="faq">
+            <ul class="question-list">
+                <li v-for="item in faqDataArray" :key="item.id">
+                    <input type="checkbox" :id="item.id" >
+                    <label :for="item.id" class="question" @click="item.toggle = !item.toggle">
+                        <h3>{{ item.question }}</h3>
+                    </label>
+                    <p class="answer" v-show="item.toggle">
+                    {{item.answer}}
+                    </p>
+                </li>
+            </ul>
+        </div>
+    </main>
+
+    <script src="https://unpkg.com/vue@3.4.5/dist/vue.global.js"></script>
+    <script>
+        Vue.createApp({
+            data(){
+                return{
+                    faqDataArray:[
+                        {
+                            id: 'question1',
+                            question: '講師的教學風格是怎樣的？',
+                            answer: '講師的教學風格以生動互動、案例分析為主，激發學生學習興趣。',
+                            toggle: false,
+                        },
+                        {
+                            id: 'question2',
+                            question: '講師是否提供辦公時間或諮詢服務？',
+                            answer: '請直接講師個人頁面中的聯繫方式直接與老師聯繫洽詢。',
+                            toggle: false,
+                        },
+                        {
+                            id: 'question4',
+                            question: '月刊內容是否由專業作者或業界專家編寫？',
+                            answer: '我們聘請專業作者和業界專家，確保文章具有高品質和可靠性。',
+                            toggle: false,
+                        },
+                        {
+                            id: 'question5',
+                            question: '能否訂閱產業動態通訊或新聞快報？',
+                            answer: '您可以訂閱我們的產業動態通訊，隨時掌握最新消息。',
+                            toggle: false,
+                        },
+                    ],
+                };
+            },
+        }).mount('#faq')
+    </script>
+
+</body>
+</html>
